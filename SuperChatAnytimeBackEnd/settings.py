@@ -25,7 +25,7 @@ SECRET_KEY = 'h#+x6#*=*58nd5256fm!p%gul^1-@$&d$*3+k&4_at2ty0=_fl'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['192.168.29.251']
 
 
 # Application definition
@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'authentication'
+    'authentication',
+    'channels',
 ]
 
 MIDDLEWARE = [
@@ -68,7 +69,18 @@ TEMPLATES = [
     },
 ]
 
+ASGI_APPLICATION = 'SuperChatAnytimeBackEnd.asgi.application'
 WSGI_APPLICATION = 'SuperChatAnytimeBackEnd.wsgi.application'
+
+
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            "hosts": [('127.0.0.1', 6379)],
+        },
+    },
+}
 
 
 # Database
