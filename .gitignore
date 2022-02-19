@@ -1,3 +1,5 @@
+# .vscode*
+# */migrations/
 /env
 /images.png
 /**/__pycache__
